@@ -1,0 +1,9 @@
+## Core LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.fls
+
+## Build tool auxiliary files
+*.fdb_latexmk
+*.synctex.gz
