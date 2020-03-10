@@ -3,6 +3,7 @@
 *.log
 *.out
 *.fls
+*.xdv
 
 ## Build tool auxiliary files
 *.fdb_latexmk

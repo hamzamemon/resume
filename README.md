@@ -1,6 +1,6 @@
 # My Resume
-My single-page resume that utilizes base LaTeX and a common font to make updating easier and less
-intensive.
+My single-page resume that utilizes LuaLaTeX for advanced features to make updating easier and less
+intensive, and a common font (Garamond) for increased out-of-the-box support with the majority of computers.
 
 #### Motivation
 This LaTeX template was created to improve the resume creation process over Google Drive and
