@@ -67,8 +67,8 @@
 \def\afterhrulespace{12pt}
 \def\beforesubsectionspace{-15pt}
 \def\aftersubsectionspace{-18pt}
-\def\beforeskillsspace{-15pt}
-\def\afterskillsspace{15pt}
+\def\beforeskillsspace{-25pt}
+\def\afterskillsspace{1pt}
 \def\beforemajorspace{10pt}
 
 
@@ -78,35 +78,35 @@
 \newcommand\name[1]{\def\@name{#1}}
 \newcommand\printname{
   \typeout \spaceskip
-  \textbf{\LARGE\textls[10]{\textsc{\@name}}}
+  \textbf{\LARGE\textls[10]{\@name}}
 }
 
 % Email
 \newcommand\email[1]{\def\@email{#1}}
 \newcommand\printemail{
   \typeout \spaceskip
-  \href{mailto:\@email}{\textsc{\@email}}
+  \href{mailto:\@email}{\@email}
 }
 
 % Phone number
 \newcommand\phonenumber[1]{\def\@phonenumber{#1}}
 \newcommand\printnumber{
   \typeout \spaceskip
-  \textsc{\@phonenumber}
+  \@phonenumber
 }
 
 % LinkedIn
 \newcommand\linkedin[1]{\def\@linkedin{#1}}
 \newcommand\printlinkedin{
   \typeout \spaceskip
-  \href{https://\@linkedin}{\textsc{\@linkedin}}
+  \href{https://\@linkedin}{\@linkedin}
 }
 
 % Github
 \newcommand\github[1]{\def\@github{#1}}
 \newcommand\printgithub{
   \typeout \spaceskip
-  \href{https://\@github}{\textsc{\@github}}
+  \href{https://\@github}{\@github}
 }
 
 % Print email and number
@@ -166,11 +166,14 @@
 %-------------LINKS------------
 % Skills
 \newcommand\skills[1]{\def\@skills{#1}}
+\newcommand\environments[1]{\def\@environments{#1}}
 \newcommand\printskills{
   \vspace*{\beforeskillsspace}
-  \typeout \spaceskip
   
-  \small{\@skills}
+  \begin{itemize}
+    \item{\small{\@skills}}
+    \item{\small{\@environments}}
+  \end{itemize}
 
   \vspace*{\afterskillsspace}
 }
