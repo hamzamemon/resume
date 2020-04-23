@@ -58,7 +58,6 @@
     urlcolor={blue!80!black}
 }
 
-
 %------------CONSTANTS---------
 \def\afterheaderspace{10pt}
 \def\beforesectionspace{-10pt}
@@ -71,7 +70,6 @@
 \def\afterskillsspace{1pt}
 \def\beforemajorspace{10pt}
 
-
 %------------HEADER------------
 % Name
 \makeatletter
@@ -79,6 +77,14 @@
 \newcommand\printname{
   \typeout \spaceskip
   \textbf{\LARGE\textls[10]{\@name}}
+}
+
+% Address
+\makeatletter
+\newcommand\address[1]{\def\@address{#1}}
+\newcommand\printaddress{
+  \typeout \spaceskip
+  \@address
 }
 
 % Email
@@ -128,14 +134,17 @@
 \makeatletter
 \newcommand\makeheader{
 	\begin{center}
-    \begin{tabularx}{\textwidth}{X Z Y}
-			\printcontacts & \printname & \printlinks \\
+    \begin{tabularx}{\textwidth}{
+      >{\hsize=0.5\hsize}X
+      >{\hsize=0.7\hsize}Z
+      >{\hsize=0.5\hsize}Y}
+      \printemail & \printname & \printlinkedin \\
+      \printnumber & \printaddress & \printgithub
 		\end{tabularx}
 
     \vspace*{\afterheaderspace}
 	\end{center}
 }
-
 
 %------------SECTION------------
 % Print a section header
@@ -162,7 +171,6 @@
 }
 \makeatother
 
-
 %-------------LINKS------------
 % Skills
 \newcommand\skills[1]{\def\@skills{#1}}
@@ -177,7 +185,6 @@
 
   \vspace*{\afterskillsspace}
 }
-
 
 %---------EDUCATION------------
 \newcommand{\major}[2]{
