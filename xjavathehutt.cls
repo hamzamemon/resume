@@ -135,9 +135,9 @@
 \newcommand\makeheader{
 	\begin{center}
     \begin{tabularx}{\textwidth}{
-      >{\hsize=0.5\hsize}X
-      >{\hsize=0.7\hsize}Z
-      >{\hsize=0.5\hsize}Y}
+      >{\hsize=0.6\hsize}X
+      >{\hsize=0.8\hsize}Z
+      >{\hsize=0.6\hsize}Y}
       \printemail & \printname & \printlinkedin \\
       \printnumber & \printaddress & \printgithub
 		\end{tabularx}
