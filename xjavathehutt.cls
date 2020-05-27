@@ -1,21 +1,19 @@
 \ProvidesClass{xjavathehutt}[2020/03/08 v1.0.0 class]
 \ProcessOptions\relax
 
-% Set font size and paper type
-% Set up the fonts according to options
-\def\mainfontsize{11pt}
-\LoadClass[letterpaper,\mainfontsize]{article}
+% Set font, font size and paper type
+\LoadClass[letterpaper,11pt]{article}
+\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{\sfdefault}
 
 % Set document margins
 \usepackage[left=0.5in,top=0.5in,right=0.5in,bottom=0.5in]{geometry}
 
 % Language support
 \usepackage[english]{babel}
-
-% Set font face
-\usepackage{fontspec}
-\usepackage{ebgaramond}
-\renewcommand{\familydefault}{\sfdefault}
 
 % Remove paragraph indentation
 \usepackage[parfill]{parskip}
@@ -39,14 +37,7 @@
 \usepackage{enumitem}
 % Remove left margin from lists, suppress vertical item separation and set top 
 % separation to a negative value to suppress a single parskip before lists
-\setlist{leftmargin=*, noitemsep, topsep=2\parskip}
-
-% For spaced small caps
-\usepackage{microtype}
-\DeclareMicrotypeSet*{smallcapsi} { 
-	encoding = {OT1,T1,T2A,LY1,OT4,QX,T5,TS1,EU1,EU2},
-	shape = {sc*,si,scit}
-}
+\setlist{leftmargin=*, noitemsep, topsep=0\parskip}
 
 % Links and colors
 \usepackage{hyperref}
@@ -59,16 +50,12 @@
 }
 
 %------------CONSTANTS---------
-\def\afterheaderspace{10pt}
-\def\beforesectionspace{-10pt}
-\def\sectionheaderhruleheight{0.5pt}
+\def\afterheaderspace{4pt}
 \def\beforesectionheaderhrulespace{4pt}
-\def\afterhrulespace{12pt}
-\def\beforesubsectionspace{-15pt}
-\def\aftersubsectionspace{-18pt}
-\def\beforeskillsspace{-25pt}
-\def\afterskillsspace{1pt}
-\def\beforemajorspace{10pt}
+\def\sectionheaderhruleheight{0.5pt}
+\def\aftersectionspace{-2pt}
+\def\beforesubsectionspace{-2pt}
+\def\aftersubsectionspace{-6pt}
 
 %------------HEADER------------
 % Name
@@ -134,7 +121,7 @@
 \makeatletter
 \newcommand\makeheader{
 	\begin{center}
-    \begin{tabularx}{\textwidth}{
+    \begin{tabularx}{1\textwidth}{
       >{\hsize=0.6\hsize}X
       >{\hsize=0.8\hsize}Z
       >{\hsize=0.6\hsize}Y}
@@ -150,21 +137,35 @@
 % Print a section header
 \makeatletter
 \newenvironment{cvsection}[1]{
-  \vspace*{\beforesectionspace}
 	\textsc{\textbf{#1}}
 	\vspace*{\beforesectionheaderhrulespace}
 	\hrule height \sectionheaderhruleheight
-  \vspace*{\afterhrulespace}
+
+  \vspace*{\aftersectionspace}
 }{}
 \makeatother
 
 % Print a subsection
 \makeatletter
-\newenvironment{cvsubsection}[4][1]{
+\newenvironment{cvsubsection}[5][1]{
   \vspace*{\beforesubsectionspace}
 
-  \begin{tabularx}{1\textwidth}{X Z Y}
-		\textbf{#2} & \textbf{#3} & \textbf{#4}
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#2} & #4 \\
+    \textit{#3} & #5
+	\end{tabularx}
+
+  \vspace*{\aftersubsectionspace}
+}
+\makeatother
+
+% Print a project
+\makeatletter
+\newenvironment{cvproject}[2][1]{
+  \vspace*{\beforesubsectionspace}
+
+  \begin{tabularx}{1\textwidth}{X}
+		\textbf{#2}
 	\end{tabularx}
 
   \vspace*{\aftersubsectionspace}
@@ -175,21 +176,20 @@
 % Skills
 \newcommand\skills[1]{\def\@skills{#1}}
 \newcommand\environments[1]{\def\@environments{#1}}
+\newcommand\methodologies[1]{\def\@methodologies{#1}}
 \newcommand\printskills{
-  \vspace*{\beforeskillsspace}
-  
   \begin{itemize}
-    \item{\small{\@skills}}
-    \item{\small{\@environments}}
+    \item{Languages: \small{\@skills}}
+    \item{Environments: \small{\@environments}}
+    \item{Methodologies: \small{\@methodologies}}
   \end{itemize}
-
-  \vspace*{\afterskillsspace}
 }
 
 %---------EDUCATION------------
-\newcommand{\major}[2]{
-  \vspace*{\beforemajorspace}
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    #1 & #2 \\
-  \end{tabular*}
-} 
+% Print an education degree
+\newcommand\printeducation[4]{
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#1} & #2 \\
+    \textit{#3} & #4
+	\end{tabularx}
+}
