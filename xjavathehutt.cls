@@ -49,13 +49,16 @@
     urlcolor={blue!80!black}
 }
 
+% Use nag to warn about obsolete commands/packages
+\RequirePackage[l2tabu, orthodox]{nag}
+
 %------------CONSTANTS---------
-\def\afterheaderspace{4pt}
-\def\beforesectionheaderhrulespace{4pt}
+\def\afterheaderspace{5pt}
+\def\beforesectionheaderhrulespace{5pt}
 \def\sectionheaderhruleheight{0.5pt}
 \def\aftersectionspace{-2pt}
-\def\beforesubsectionspace{-2pt}
-\def\aftersubsectionspace{-6pt}
+\def\beforesubsectionspace{-1pt}
+\def\aftersubsectionspace{-5pt}
 
 %------------HEADER------------
 % Name
