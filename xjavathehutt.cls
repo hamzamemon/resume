@@ -35,7 +35,7 @@
 
 % To customize lists
 \usepackage{enumitem}
-% Remove left margin from lists, suppress vertical item separation and set top 
+% Remove left margin from lists, suppress vertical item separation and set top
 % separation to a negative value to suppress a single parskip before lists
 \setlist{leftmargin=*, noitemsep, topsep=0\parskip}
 
@@ -52,13 +52,19 @@
 % Use nag to warn about obsolete commands/packages
 \RequirePackage[l2tabu, orthodox]{nag}
 
+% Remove default spacing
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+
+
 %------------CONSTANTS---------
-\def\afterheaderspace{5pt}
-\def\beforesectionheaderhrulespace{5pt}
-\def\sectionheaderhruleheight{0.5pt}
-\def\aftersectionspace{-2pt}
-\def\beforesubsectionspace{-1pt}
-\def\aftersubsectionspace{-5pt}
+\def\beforesectionspace{10pt}
+\def\aftersectionspace{2pt}
+\def\beforesubsectionprojectspace{4pt}
+\def\aftersubsectionprojectspace{2pt}
 
 %------------HEADER------------
 % Name
@@ -81,7 +87,7 @@
 \newcommand\email[1]{\def\@email{#1}}
 \newcommand\printemail{
   \typeout \spaceskip
-  \href{mailto:\@email}{\@email}
+  \@email
 }
 
 % Phone number
@@ -95,14 +101,14 @@
 \newcommand\linkedin[1]{\def\@linkedin{#1}}
 \newcommand\printlinkedin{
   \typeout \spaceskip
-  \href{https://\@linkedin}{\@linkedin}
+  \@linkedin
 }
 
 % Github
 \newcommand\github[1]{\def\@github{#1}}
 \newcommand\printgithub{
   \typeout \spaceskip
-  \href{https://\@github}{\@github}
+  \@github
 }
 
 % Print email and number
@@ -131,8 +137,6 @@
       \printemail & \printname & \printlinkedin \\
       \printnumber & \printaddress & \printgithub
 		\end{tabularx}
-
-    \vspace*{\afterheaderspace}
 	\end{center}
 }
 
@@ -140,9 +144,9 @@
 % Print a section header
 \makeatletter
 \newenvironment{cvsection}[1]{
-	\textsc{\textbf{#1}}
-	\vspace*{\beforesectionheaderhrulespace}
-	\hrule height \sectionheaderhruleheight
+	\vspace*{\beforesectionspace}
+
+	\textsc{\textbf{\Large #1}}
 
   \vspace*{\aftersectionspace}
 }{}
@@ -150,28 +154,26 @@
 
 % Print a subsection
 \makeatletter
-\newenvironment{cvsubsection}[5][1]{
-  \vspace*{\beforesubsectionspace}
+\newenvironment{cvsubsection}[4]{
+  \vspace*{\beforesubsectionprojectspace}
 
   \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#2} & #4 \\
-    \textit{#3} & #5
+		\textbf{#1} & #3 \\
+    #2 & #4
 	\end{tabularx}
 
-  \vspace*{\aftersubsectionspace}
+  \vspace*{\aftersubsectionprojectspace}
 }
 \makeatother
 
 % Print a project
 \makeatletter
-\newenvironment{cvproject}[2][1]{
-  \vspace*{\beforesubsectionspace}
+\newenvironment{cvproject}[1]{
+  \vspace*{\beforesubsectionprojectspace}
 
-  \begin{tabularx}{1\textwidth}{X}
-		\textbf{#2}
-	\end{tabularx}
+	\textbf{#1}
 
-  \vspace*{\aftersubsectionspace}
+  \vspace*{\aftersubsectionprojectspace}
 }
 \makeatother
 
@@ -181,6 +183,8 @@
 \newcommand\environments[1]{\def\@environments{#1}}
 \newcommand\methodologies[1]{\def\@methodologies{#1}}
 \newcommand\printskills{
+  \vspace*{\aftersectionspace}
+
   \begin{itemize}
     \item{Languages: \small{\@skills}}
     \item{Environments: \small{\@environments}}
