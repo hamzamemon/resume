@@ -1,4 +1,4 @@
-\ProvidesClass{xjavathehutt}[2020/03/08 v1.0.0 class]
+\ProvidesClass{xjavathehutt}[2020/09/22 v3.0.0 class]
 \ProcessOptions\relax
 
 % Set font, font size and paper type
@@ -62,9 +62,9 @@
 
 %------------CONSTANTS---------
 \def\beforesectionspace{10pt}
-\def\aftersectionspace{2pt}
-\def\beforesubsectionprojectspace{4pt}
-\def\aftersubsectionprojectspace{2pt}
+\def\aftersectionspace{3pt}
+\def\beforesubsectionprojectspace{7pt}
+\def\aftersubsectionprojectspace{1pt}
 
 %------------HEADER------------
 % Name
@@ -72,7 +72,7 @@
 \newcommand\name[1]{\def\@name{#1}}
 \newcommand\printname{
   \typeout \spaceskip
-  \textbf{\LARGE\textls[10]{\@name}}
+  \textbf{\huge{\@name}}
 }
 
 % Address
@@ -149,7 +149,28 @@
 	\textsc{\textbf{\Large #1}}
 
   \vspace*{\aftersectionspace}
-}{}
+}
+\makeatother
+
+% Subsection but no beginning large space
+\makeatletter
+\newenvironment{cvsubsectionstart}[4]{
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#1} & #3 \\
+    #2 & #4
+	\end{tabularx}
+
+  \vspace*{\aftersubsectionprojectspace}
+}
+\makeatother
+
+% Project but no beginning large space
+\makeatletter
+\newenvironment{cvprojectstart}[1]{
+	\textbf{#1}
+
+  \vspace*{\aftersubsectionprojectspace}
+}
 \makeatother
 
 % Print a subsection
@@ -181,22 +202,9 @@
 % Skills
 \newcommand\skills[1]{\def\@skills{#1}}
 \newcommand\environments[1]{\def\@environments{#1}}
-\newcommand\methodologies[1]{\def\@methodologies{#1}}
 \newcommand\printskills{
-  \vspace*{\aftersectionspace}
-
   \begin{itemize}
     \item{Languages: \small{\@skills}}
     \item{Environments: \small{\@environments}}
-    \item{Methodologies: \small{\@methodologies}}
   \end{itemize}
-}
-
-%---------EDUCATION------------
-% Print an education degree
-\newcommand\printeducation[4]{
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#1} & #2 \\
-    \textit{#3} & #4
-	\end{tabularx}
 }
