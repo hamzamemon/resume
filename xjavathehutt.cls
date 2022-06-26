@@ -44,9 +44,8 @@
 \usepackage{xcolor}
 \hypersetup{
     colorlinks,
-    linkcolor={red!50!black},
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black}
+    linkcolor=blue,
+    urlcolor=blue
 }
 
 % Use nag to warn about obsolete commands/packages
@@ -59,12 +58,24 @@
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
 
+%Underlining ruler for sections
+\usepackage{titlesec}
+\usepackage{sectsty}
+\titleformat{\section}
+{\bfseries\uppercase}
+{}
+{0em}
+{}[\titlerule \vspace{5pt}]
+\titlespacing\section{0pt}{10pt plus 4pt minus 2pt}{0pt plus 0pt minus 0pt}
 
 %------------CONSTANTS---------
 \def\beforesectionspace{10pt}
-\def\aftersectionspace{3pt}
-\def\beforesubsectionprojectspace{7pt}
+\def\aftersectionspace{5pt}
+\def\beforesubsectionprojectspace{6pt}
 \def\aftersubsectionprojectspace{1pt}
+\def\beforesectionheaderhrulespace{5pt}
+\def\sectionheaderhruleheight{0.5pt}
+\def\beforecvsubsectionnocompanyspace{1pt}
 
 %------------HEADER------------
 % Name
@@ -72,22 +83,14 @@
 \newcommand\name[1]{\def\@name{#1}}
 \newcommand\printname{
   \typeout \spaceskip
-  \textbf{\huge{\@name}}
-}
-
-% Address
-\makeatletter
-\newcommand\address[1]{\def\@address{#1}}
-\newcommand\printaddress{
-  \typeout \spaceskip
-  \@address
+  \textbf{\Huge{\@name}}
 }
 
 % Email
 \newcommand\email[1]{\def\@email{#1}}
 \newcommand\printemail{
   \typeout \spaceskip
-  \@email
+  \url{\@email}
 }
 
 % Phone number
@@ -101,29 +104,22 @@
 \newcommand\linkedin[1]{\def\@linkedin{#1}}
 \newcommand\printlinkedin{
   \typeout \spaceskip
-  \@linkedin
+  \url{\@linkedin}
 }
 
 % Github
 \newcommand\github[1]{\def\@github{#1}}
 \newcommand\printgithub{
   \typeout \spaceskip
-  \@github
+  \url{\@github}
 }
 
-% Print email and number
-\newcommand\printcontacts{
+% Portfolio
+\makeatletter
+\newcommand\portfolio[1]{\def\@portfolio{#1}}
+\newcommand\printportfolio{
   \typeout \spaceskip
-  \printemail
-  \linebreak
-  \printnumber
-}
-
-% Print links
-\newcommand\printlinks{
-  \typeout \spaceskip
-  \printlinkedin
-  \printgithub
+  \url{\@portfolio}
 }
 
 % Print header
@@ -135,7 +131,7 @@
       >{\hsize=0.8\hsize}Z
       >{\hsize=0.6\hsize}Y}
       \printemail & \printname & \printlinkedin \\
-      \printnumber & \printaddress & \printgithub
+      \printnumber & \printportfolio & \printgithub
 		\end{tabularx}
 	\end{center}
 }
@@ -144,17 +140,50 @@
 % Print a section header
 \makeatletter
 \newenvironment{cvsection}[1]{
-	\vspace*{\beforesectionspace}
+  	\vspace*{\beforesectionspace}
 
 	\textsc{\textbf{\Large #1}}
+	\vspace*{\beforesectionheaderhrulespace}
+	\hrule height \sectionheaderhruleheight
 
   \vspace*{\aftersectionspace}
 }
 \makeatother
 
+% Subsection with two positions (promotion)
+\newcommand*{\cvsubsectiontwopositions}[7]{%
+ \textbf{#1}
+
+ \vspace*{\beforecvsubsectionnocompanyspace}
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#2} & #3
+	\end{tabularx}
+
+  #4
+
+  \vspace*{\beforecvsubsectionnocompanyspace}
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#5} & #6
+	\end{tabularx}
+
+  #7
+}
+
 % Subsection but no beginning large space
 \makeatletter
-\newenvironment{cvsubsectionstart}[4]{
+\newenvironment{cvsubsectionstart}[3]{
+  \begin{tabularx}{1\textwidth}{X Y}
+		\textbf{#1} & #2 \\
+     & #3
+	\end{tabularx}
+
+  \vspace*{\aftersubsectionprojectspace}
+}
+\makeatother
+
+% Education
+\makeatletter
+\newenvironment{cveducation}[4]{
   \begin{tabularx}{1\textwidth}{X Y}
 		\textbf{#1} & #3 \\
     #2 & #4
@@ -175,12 +204,11 @@
 
 % Print a subsection
 \makeatletter
-\newenvironment{cvsubsection}[4]{
+\newenvironment{cvsubsection}[3]{
   \vspace*{\beforesubsectionprojectspace}
 
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#1} & #3 \\
-    #2 & #4
+  \begin{tabularx}{1\textwidth}{X Z Y}
+		\textbf{#1} & #2 & #3
 	\end{tabularx}
 
   \vspace*{\aftersubsectionprojectspace}
