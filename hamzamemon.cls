@@ -2,7 +2,7 @@
 \ProcessOptions\relax
 
 % Set font, font size and paper type
-\LoadClass[letterpaper,11pt]{article}
+\LoadClass[letterpaper,10pt]{article}
 \usepackage{microtype}
 \usepackage{fontspec}
 % Set Noto Sans - modern, professional, clean (similar to Roboto)
@@ -11,8 +11,8 @@
 \setmonofont{Noto Sans Mono}
 \renewcommand{\familydefault}{\sfdefault}
 
-% Set document margins
-\usepackage[left=0.75in,top=0.75in,right=0.75in,bottom=0.75in]{geometry}
+% Set document margins (optimized for 1-page resume)
+\usepackage[left=0.5in,top=0.5in,right=0.5in,bottom=0.5in]{geometry}
 
 % Language support
 \usepackage[english]{babel}
@@ -70,7 +70,7 @@
 \setlength{\topskip}{0pt}
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
-\setlength{\itemsep}{5pt}
+\setlength{\itemsep}{2pt}
 \setlength{\parskip}{1em plus 0.5em}
 
 % Underlining ruler for sections
@@ -83,13 +83,13 @@
 \titlespacing\section{0pt}{10pt plus 4pt minus 2pt}{0pt plus 0pt minus 0pt}
 
 %------------CONSTANTS---------
-\def\beforesectionspace{10pt}
-\def\aftersectionspace{5pt}
-\def\beforesubsectionprojectspace{6pt}
-\def\aftersubsectionprojectspace{1pt}
-\def\beforesectionheaderhrulespace{5pt}
+\def\beforesectionspace{5pt}
+\def\aftersectionspace{2pt}
+\def\beforesubsectionprojectspace{3pt}
+\def\aftersubsectionprojectspace{0pt}
+\def\beforesectionheaderhrulespace{3pt}
 \def\sectionheaderhruleheight{0.5pt}
-\def\beforecvsubsectionnocompanyspace{1pt}
+\def\beforecvsubsectionnocompanyspace{0pt}
 
 %------------HEADER------------
 % Name
@@ -172,7 +172,7 @@
   \vspace*{\aftersectionspace}
 
   % Add visual separator between sections
-  \vspace{8pt}
+  \vspace{4pt}
 }
 \makeatother
 
