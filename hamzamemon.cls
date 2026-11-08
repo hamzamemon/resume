@@ -1,22 +1,25 @@
-\ProvidesClass{xjavathehutt}[2020/09/22 v3.0.0 class]
+\ProvidesClass{hamzamemon}[2020/09/22 v3.0.0 class]
 \ProcessOptions\relax
 
 % Set font, font size and paper type
 \LoadClass[letterpaper,11pt]{article}
 \usepackage{microtype}
 \usepackage{fontspec}
-\usepackage[scaled]{helvet}
-\usepackage[T1]{fontenc}
+% Set Noto Sans - modern, professional, clean (similar to Roboto)
+\setmainfont{Noto Sans}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Sans Mono}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Set document margins
-\usepackage[left=0.5in,top=0.5in,right=0.5in,bottom=0.5in]{geometry}
+\usepackage[left=0.75in,top=0.75in,right=0.75in,bottom=0.75in]{geometry}
 
 % Language support
 \usepackage[english]{babel}
 
 % Remove paragraph indentation
-\usepackage[parfill]{parskip}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 
 % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{array}
@@ -40,16 +43,26 @@
 \setlist{leftmargin=*, noitemsep, topsep=0\parskip}
 
 % Links and colors
-\usepackage{hyperref}
 \usepackage{xcolor}
+\definecolor{linkblue}{RGB}{0,0,136}
+\definecolor{sectionblue}{RGB}{0,85,165}
+\definecolor{accentblue}{RGB}{0,100,150}
+\usepackage{hyperref}
+% Configure hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue
+}
 \hypersetup{
     colorlinks,
-    linkcolor=blue,
-    urlcolor=blue
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    pdftitle={Hamza Memon - Software Developer},
+    pdfauthor={Hamza Memon},
+    pdfsubject={Resume},
+    pdfkeywords={Java, Python, Angular, React, Spring Boot}
 }
-
-% Use nag to warn about obsolete commands/packages
-\RequirePackage[l2tabu, orthodox]{nag}
 
 % Remove default spacing
 \setlength{\parskip}{0pt}
@@ -57,12 +70,13 @@
 \setlength{\topskip}{0pt}
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
+\setlength{\itemsep}{5pt}
+\setlength{\parskip}{1em plus 0.5em}
 
-%Underlining ruler for sections
+% Underlining ruler for sections
 \usepackage{titlesec}
-\usepackage{sectsty}
 \titleformat{\section}
-{\bfseries\uppercase}
+{\bfseries\uppercase\color{accentblue}}
 {}
 {0em}
 {}[\titlerule \vspace{5pt}]
@@ -80,60 +94,69 @@
 %------------HEADER------------
 % Name
 \makeatletter
-\newcommand\name[1]{\def\@name{#1}}
-\newcommand\printname{
+\NewDocumentCommand\name{m}{
+  \def\@name{#1}
+}
+\NewDocumentCommand\printname{}{
   \typeout \spaceskip
   \textbf{\Huge{\@name}}
 }
 
 % Email
-\newcommand\email[1]{\def\@email{#1}}
-\newcommand\printemail{
+\NewDocumentCommand\email{m}{
+  \def\@email{#1}
+}
+\NewDocumentCommand\printemail{}{
   \typeout \spaceskip
   \url{\@email}
 }
 
 % Phone number
-\newcommand\phonenumber[1]{\def\@phonenumber{#1}}
-\newcommand\printnumber{
+\NewDocumentCommand\phonenumber{m}{
+  \def\@phonenumber{#1}
+}
+\NewDocumentCommand\printnumber{}{
   \typeout \spaceskip
   \@phonenumber
 }
 
 % LinkedIn
-\newcommand\linkedin[1]{\def\@linkedin{#1}}
-\newcommand\printlinkedin{
+\NewDocumentCommand\linkedin{m}{
+  \def\@linkedin{#1}
+}
+\NewDocumentCommand\printlinkedin{}{
   \typeout \spaceskip
   \url{\@linkedin}
 }
 
 % Github
-\newcommand\github[1]{\def\@github{#1}}
-\newcommand\printgithub{
+\NewDocumentCommand\github{m}{
+  \def\@github{#1}
+}
+\NewDocumentCommand\printgithub{}{
   \typeout \spaceskip
   \url{\@github}
 }
 
 % Portfolio
 \makeatletter
-\newcommand\portfolio[1]{\def\@portfolio{#1}}
-\newcommand\printportfolio{
+\NewDocumentCommand\portfolio{m}{
+  \def\@portfolio{#1}
+}
+\NewDocumentCommand\printportfolio{}{
   \typeout \spaceskip
   \url{\@portfolio}
 }
 
 % Print header
 \makeatletter
-\newcommand\makeheader{
+\NewDocumentCommand\makeheader{}{
 	\begin{center}
-    \begin{tabularx}{1\textwidth}{
-      >{\hsize=0.6\hsize}X
-      >{\hsize=0.8\hsize}Z
-      >{\hsize=0.6\hsize}Y}
+    \begin{tabularx}{1\textwidth}{ X Z Z }
       \printemail & \printname & \printlinkedin \\
       \printnumber & \printportfolio & \printgithub
-		\end{tabularx}
-	\end{center}
+    \end{tabularx}
+\end{center}
 }
 
 %------------SECTION------------
@@ -147,11 +170,15 @@
 	\hrule height \sectionheaderhruleheight
 
   \vspace*{\aftersectionspace}
+
+  % Add visual separator between sections
+  \vspace{8pt}
 }
 \makeatother
 
 % Subsection with two positions (promotion)
-\newcommand*{\cvsubsectiontwopositions}[7]{%
+\makeatletter
+\NewDocumentCommand\cvsubsectiontwopositions{m m m m m m m}{
  \textbf{#1}
 
  \vspace*{\beforecvsubsectionnocompanyspace}
@@ -168,10 +195,11 @@
 
   #7
 }
+\makeatother
 
 % Subsection but no beginning large space
 \makeatletter
-\newenvironment{cvsubsectionstart}[3]{
+\NewDocumentEnvironment{cvsubsectionstart}{m m m}{
   \begin{tabularx}{1\textwidth}{X Y}
 		\textbf{#1} & #2 \\
      & #3
@@ -183,7 +211,7 @@
 
 % Education
 \makeatletter
-\newenvironment{cveducation}[4]{
+\NewDocumentEnvironment{cveducation}{m m m m}{
   \begin{tabularx}{1\textwidth}{X Y}
 		\textbf{#1} & #3 \\
     #2 & #4
@@ -195,7 +223,7 @@
 
 % Project but no beginning large space
 \makeatletter
-\newenvironment{cvprojectstart}[1]{
+\NewDocumentEnvironment{cvprojectstart}{m}{
 	\textbf{#1}
 
   \vspace*{\aftersubsectionprojectspace}
@@ -204,7 +232,7 @@
 
 % Print a subsection
 \makeatletter
-\newenvironment{cvsubsection}[3]{
+\NewDocumentEnvironment{cvsubsection}{m m m}{
   \vspace*{\beforesubsectionprojectspace}
 
   \begin{tabularx}{1\textwidth}{X Z Y}
@@ -217,7 +245,7 @@
 
 % Print a project
 \makeatletter
-\newenvironment{cvproject}[1]{
+\NewDocumentEnvironment{cvproject}{m}{
   \vspace*{\beforesubsectionprojectspace}
 
 	\textbf{#1}
@@ -227,12 +255,21 @@
 \makeatother
 
 %-------------LINKS------------
-% Skills
-\newcommand\skills[1]{\def\@skills{#1}}
-\newcommand\environments[1]{\def\@environments{#1}}
-\newcommand\printskills{
+% Skills - Grouped by category for better scanning
+\makeatletter
+\NewDocumentCommand\skills{m}{
+  \def\@skills{#1}
+}
+\NewDocumentCommand\environments{m}{
+  \def\@environments{#1}
+}
+\NewDocumentCommand\printskills{}{
   \begin{itemize}
-    \item{Languages: \small{\@skills}}
-    \item{Environments: \small{\@environments}}
+    % Programming Languages
+    \item{\textbf{Languages}: \small{\@skills}}
+    \item{\textbf{Operating Systems}: \small{Windows, Linux}}
+    \item{\textbf{IDEs/Editors}: \small{Visual Studio, IntelliJ, PyCharm}}
+    \item{\textbf{Dev Tools}: \small{Git, Jira, Docker, Kubernetes}}
   \end{itemize}
 }
+\makeatother
