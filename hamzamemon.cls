@@ -2,13 +2,11 @@
 \ProcessOptions\relax
 
 % Set font, font size and paper type
-\LoadClass[letterpaper,10pt]{article}
+\LoadClass[letterpaper,11pt]{article}
 \usepackage{microtype}
 \usepackage{fontspec}
-% Set Noto Sans - modern, professional, clean (similar to Roboto)
-\setmainfont{Noto Sans}
-\setsansfont{Noto Sans}
-\setmonofont{Noto Sans Mono}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Set document margins (optimized for 1-page resume)
@@ -138,23 +136,13 @@
   \url{\@github}
 }
 
-% Portfolio
-\makeatletter
-\NewDocumentCommand\portfolio{m}{
-  \def\@portfolio{#1}
-}
-\NewDocumentCommand\printportfolio{}{
-  \typeout \spaceskip
-  \url{\@portfolio}
-}
-
 % Print header
 \makeatletter
 \NewDocumentCommand\makeheader{}{
 	\begin{center}
     \begin{tabularx}{1\textwidth}{ X Z Z }
       \printemail & \printname & \printlinkedin \\
-      \printnumber & \printportfolio & \printgithub
+      \printnumber & \printgithub
     \end{tabularx}
 \end{center}
 }
