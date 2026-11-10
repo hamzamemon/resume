@@ -1,34 +1,56 @@
-\ProvidesClass{hamzamemon}[2020/09/22 v3.0.0 class]
+\ProvidesClass{hamzamemon}[2026/11/09 v4.0 class]
 \ProcessOptions\relax
 
-% Set font, font size and paper type
+%\usepackage{latexsym}
+%\usepackage[empty]{fullpage}
+%\usepackage{titlesec}
+%\usepackage{marvosym}
+%\usepackage[usenames,dvipsnames]{color}
+%\usepackage{verbatim}
+%\usepackage{enumitem}
+%\usepackage[hidelinks]{hyperref}
+%\usepackage{fancyhdr}
+%\usepackage[english]{babel}
+%\usepackage{tabularx}
+%\input{glyphtounicode}
+
+%----------BASIC SETUP-----------------
 \LoadClass[letterpaper,11pt]{article}
+
+% Typography enhancement package
 \usepackage{microtype}
-\usepackage{fontspec}
-\usepackage[scaled]{helvet}
-\usepackage[T1]{fontenc}
-\renewcommand{\familydefault}{\sfdefault}
 
-% Set document margins (optimized for 1-page resume)
-\usepackage[left=0.5in,top=0.5in,right=0.5in,bottom=0.5in]{geometry}
-
-% Language support
+% Use Helvetica font
 \usepackage[english]{babel}
+\babelfont{rm}{TeX Gyre Heros}
 
-% Remove paragraph indentation
+%----------DOCUMENT SETUP-----------------
+% Set document margins
+\usepackage[margin=0.5in]{geometry}
+
+% Paragraph spacing
 \setlength{\parskip}{0pt}
 \setlength{\parsep}{0pt}
-
-% Required for boldface (\bf and \bfseries) tabular columns
-\usepackage{array}
 
 % Suppress page numbers
 \pagestyle{empty}
 
+%----------TABLES & LISTS-----------------
+% Required for boldface (\bf and \bfseries) in tabular columns
+\usepackage{array}
+
 % Flexible tables
 \usepackage{float,tabularx}
+
+% Column type definitions:
+% X = Left-aligned column
+% Z = Centered column  
+% Y = Right-aligned column
+% Use @{ for no padding between columns
+\newcolumntype{X}{>{\raggedright\arraybackslash}X}
 \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{Z}{>{\centering\arraybackslash}X}
+
 % Remove space from tables
 \raggedbottom
 \raggedright
@@ -36,228 +58,226 @@
 
 % To customize lists
 \usepackage{enumitem}
+
 % Remove left margin from lists, suppress vertical item separation and set top
 % separation to a negative value to suppress a single parskip before lists
-\setlist{leftmargin=*, noitemsep, topsep=0\parskip}
+\setlist{
+    leftmargin=*,
+    itemsep=3pt,
+    parsep=0pt,
+    topsep=0pt,
+    partopsep=0pt
+}
 
-% Links and colors
+%----------LINKS & COLORS-----------------
+% Color handling package
 \usepackage{xcolor}
-\definecolor{linkblue}{RGB}{0,0,136}
-\definecolor{sectionblue}{RGB}{0,85,165}
-\definecolor{accentblue}{RGB}{0,100,150}
-\usepackage{hyperref}
+
 % Configure hyperref
+\usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=linkblue,
-    urlcolor=linkblue
-}
-\hypersetup{
-    colorlinks,
-    linkcolor=linkblue,
-    urlcolor=linkblue,
+    linkcolor=blue,
+    urlcolor=blue,
     pdftitle={Hamza Memon - Software Developer},
-    pdfauthor={Hamza Memon},
-    pdfsubject={Resume},
-    pdfkeywords={Java, Python, Angular, React, Spring Boot}
+    pdfauthor={Hamza Memon}
 }
 
-% Remove default spacing
-\setlength{\parskip}{0pt}
-\setlength{\parsep}{0pt}
-\setlength{\topskip}{0pt}
-\setlength{\topsep}{0pt}
-\setlength{\partopsep}{0pt}
-\setlength{\itemsep}{2pt}
-\setlength{\parskip}{1em plus 0.5em}
-
-% Underlining ruler for sections
+%----------SECTIONS-----------------
+% Section customization package
 \usepackage{titlesec}
+
+% Format section headers
 \titleformat{\section}
-{\bfseries\uppercase\color{accentblue}}
-{}
-{0em}
-{}[\titlerule \vspace{5pt}]
+    {\bfseries\uppercase}
+    {}
+    {0em}
+    {}[\titlerule\vspace{5pt}]
+
+% Section vertical spacing
 \titlespacing\section{0pt}{10pt plus 4pt minus 2pt}{0pt plus 0pt minus 0pt}
 
 %------------CONSTANTS---------
+% Space before section titles
 \def\beforesectionspace{5pt}
+
+% Space after section titles
 \def\aftersectionspace{2pt}
+
+% Space before project entries
 \def\beforesubsectionprojectspace{3pt}
+
+% Space after project entries
 \def\aftersubsectionprojectspace{0pt}
+
+% Space above horizontal rule
 \def\beforesectionheaderhrulespace{3pt}
+
+% Thickness of horizontal rule
 \def\sectionheaderhruleheight{0.5pt}
+
+% Space before company name
 \def\beforecvsubsectionnocompanyspace{0pt}
 
-%------------HEADER------------
-% Name
-\makeatletter
-\NewDocumentCommand\name{m}{
-  \def\@name{#1}
+%-------------------------
+% Custom commands
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
 }
-\NewDocumentCommand\printname{}{
-  \typeout \spaceskip
-  \textbf{\Huge{\@name}}
-}
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
 
-% Email
-\NewDocumentCommand\email{m}{
-  \def\@email{#1}
-}
-\NewDocumentCommand\printemail{}{
-  \typeout \spaceskip
-  \url{\@email}
-}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-% Phone number
-\NewDocumentCommand\phonenumber{m}{
-  \def\@phonenumber{#1}
-}
-\NewDocumentCommand\printnumber{}{
-  \typeout \spaceskip
-  \@phonenumber
-}
-
-% LinkedIn
-\NewDocumentCommand\linkedin{m}{
-  \def\@linkedin{#1}
-}
-\NewDocumentCommand\printlinkedin{}{
-  \typeout \spaceskip
-  \url{\@linkedin}
-}
-
-% Github
-\NewDocumentCommand\github{m}{
-  \def\@github{#1}
-}
-\NewDocumentCommand\printgithub{}{
-  \typeout \spaceskip
-  \url{\@github}
-}
-
-% Print header
-\makeatletter
-\NewDocumentCommand\makeheader{}{
-	\begin{center}
-    \begin{tabularx}{1\textwidth}{ X Z Z }
-      \printemail & \printname & \printlinkedin \\
-      \printnumber & \printgithub
-    \end{tabularx}
-\end{center}
-}
-
-%------------SECTION------------
-% Print a section header
+%------------SECTIONS------------
 \makeatletter
 \newenvironment{cvsection}[1]{
-  	\vspace*{\beforesectionspace}
+    \vspace*{\beforesectionspace}
 
-	\textsc{\textbf{\Large #1}}
-	\vspace*{\beforesectionheaderhrulespace}
-	\hrule height \sectionheaderhruleheight
+    \textsc{\textbf{\Large #1}}
+    \vspace*{\beforesectionheaderhrulespace}
+    \hrule height \sectionheaderhruleheight
 
-  \vspace*{\aftersectionspace}
+    \vspace*{\aftersectionspace}
 
-  % Add visual separator between sections
-  \vspace{4pt}
+    % Add visual separator between sections
+    \vspace{4pt}
 }
 \makeatother
 
 % Subsection with two positions (promotion)
 \makeatletter
 \NewDocumentCommand\cvsubsectiontwopositions{m m m m m m m}{
- \textbf{#1}
+    \textbf{#1}
 
- \vspace*{\beforecvsubsectionnocompanyspace}
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#2} & #3
-	\end{tabularx}
+    \vspace*{\beforecvsubsectionnocompanyspace}
+    \begin{tabularx}{1\textwidth}{X Y}
+        \textbf{#2} & #3
+    \end{tabularx}
 
-  #4
+    #4
 
-  \vspace*{\beforecvsubsectionnocompanyspace}
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#5} & #6
-	\end{tabularx}
+    \vspace*{\beforecvsubsectionnocompanyspace}
+    \begin{tabularx}{1\textwidth}{X Y}
+        \textbf{#5} & #6
+    \end{tabularx}
 
-  #7
+    #7
 }
 \makeatother
 
-% Subsection but no beginning large space
+% Subsection with no beginning space
+% Used for project continuations without extra spacing
+% Uses tabularx with X Y column types
+
 \makeatletter
 \NewDocumentEnvironment{cvsubsectionstart}{m m m}{
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#1} & #2 \\
-     & #3
-	\end{tabularx}
+    \begin{tabularx}{1\textwidth}{X Y}
+        \textbf{#1} & #2 \\
+        & #3
+    \end{tabularx}
 
-  \vspace*{\aftersubsectionprojectspace}
+    \vspace*{\aftersubsectionprojectspace}
 }
 \makeatother
 
-% Education
-\makeatletter
-\NewDocumentEnvironment{cveducation}{m m m m}{
-  \begin{tabularx}{1\textwidth}{X Y}
-		\textbf{#1} & #3 \\
-    #2 & #4
-	\end{tabularx}
-
-  \vspace*{\aftersubsectionprojectspace}
+% Print subsection
+% Standard job entry
+% Uses tabularx with X Z Y column types
+% X = left-aligned (job title)
+% Z = centered (company)
+% Y = right-aligned (dates)
+\newcommand{\resumeSubheading}[4]{
+    \vspace*{\beforesubsectionprojectspace}
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
 }
-\makeatother
 
-% Project but no beginning large space
-\makeatletter
-\NewDocumentEnvironment{cvprojectstart}{m}{
-	\textbf{#1}
-
-  \vspace*{\aftersubsectionprojectspace}
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
 }
-\makeatother
 
-% Print a subsection
+
 \makeatletter
 \NewDocumentEnvironment{cvsubsection}{m m m}{
-  \vspace*{\beforesubsectionprojectspace}
+    \vspace*{\beforesubsectionprojectspace}
 
-  \begin{tabularx}{1\textwidth}{X Z Y}
-		\textbf{#1} & #2 & #3
-	\end{tabularx}
+    \begin{tabularx}{1\textwidth}{X Z Y}
+        \textbf{#1} & #2 & #3
+    \end{tabularx}
 
-  \vspace*{\aftersubsectionprojectspace}
+    \vspace*{\aftersubsectionprojectspace}
 }
 \makeatother
 
-% Print a project
+% Education environment
+% Similar structure to subsection
+% Uses tabularx with X Y column types
+
+
+\makeatletter
+\NewDocumentEnvironment{cveducation}{m m m}{
+    \begin{tabularx}{1\textwidth}{X Y}
+        \textbf{#1} & #2 \\
+        #3
+    \end{tabularx}
+
+    \vspace*{\aftersubsectionprojectspace}
+}
+\makeatother
+
+% Project continuation without extra space
+% Used when project continues from previous entry
+% Simple bold text display
+
+\makeatletter
+\NewDocumentEnvironment{cvprojectstart}{m}{
+    \textbf{#1}
+
+    \vspace*{\aftersubsectionprojectspace}
+}
+\makeatother
+
+
+
+% Print project
+% Project entry
+% Simple bold text display
+% Uses beforesubsectionprojectspace spacing
+
 \makeatletter
 \NewDocumentEnvironment{cvproject}{m}{
-  \vspace*{\beforesubsectionprojectspace}
+    \vspace*{\beforesubsectionprojectspace}
 
-	\textbf{#1}
+    \textbf{#1}
 
-  \vspace*{\aftersubsectionprojectspace}
+    \vspace*{\aftersubsectionprojectspace}
 }
 \makeatother
 
-%-------------LINKS------------
-% Skills - Grouped by category for better scanning
+%=============================================================================
+% 13. LINKS
+%=============================================================================
+% Skills command - Grouped by category for better scanning
+% Store user's skills
+% Takes one mandatory argument (comma-separated skills)
 \makeatletter
 \NewDocumentCommand\skills{m}{
   \def\@skills{#1}
 }
-\NewDocumentCommand\environments{m}{
-  \def\@environments{#1}
-}
+
+\makeatletter
 \NewDocumentCommand\printskills{}{
-  \begin{itemize}
-    % Programming Languages
-    \item{\textbf{Languages}: \small{\@skills}}
-    \item{\textbf{Operating Systems}: \small{Windows, Linux}}
-    \item{\textbf{IDEs/Editors}: \small{Visual Studio, IntelliJ, PyCharm}}
-    \item{\textbf{Dev Tools}: \small{Git, Jira, Docker, Kubernetes}}
-  \end{itemize}
+    \begin{itemize}
+        \item{Languages: \small{\@skills}}
+    \end{itemize}
 }
 \makeatother

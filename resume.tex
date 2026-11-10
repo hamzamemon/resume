@@ -1,15 +1,6 @@
-% Use XeLaTeX for custom fonts
 \documentclass{hamzamemon}
-% Note: Font configuration is in hamzamemon.cls
-\usepackage{enumitem}
 
-\name{Hamza Memon}
-\email{hmemon67@gmail.com}
-\phonenumber{(518) 344-9662}
-\linkedin{linkedin.com/in/hamza-memon}
-\github{github.com/hamzamemon}
 \skills{Java, Python, JavaScript, TypeScript | Spring Boot, REST, Angular, React | SQL, Docker, Kubernetes | HTML, CSS, Git, Jira}
-\environments{Windows, Linux, Git, Docker, Kubernetes, Jira}
 
 
 %-------------------------------------------
@@ -17,23 +8,29 @@
 
 
 %----------HEADING-----------------
-\makeheader
+\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\Large Hamza Memon}} & Email: \href{mailto:hmemon67@gmail.com}{hmemon67@gmail.com}\\
+  \href{https://linkedin.com/in/hamza-memon}{https://linkedin.com/in/hamza-memon} & Mobile: \href{tel:+15183449662}{+1-518-344-9662} \\
+\end{tabularx}
 
 
 %----------EXPERIENCE-----------------
-\begin{cvsection}{Experience}
-  \cvsubsectiontwopositions{American Airlines}
-  {Software Developer}{Jun 2022-Present}
-  {}
+\section{Experience}
+  \resumeSubheading
+    {American Airlines}{Dallas, TX}
+    {Software Engineer}{Jun 2022-Present}
+  \resumeSubSubheading
     {Associate Software Developer}{Feb 2021-Jun 2022}
-    {\begin{itemize}
+    \resumeItemListStart
       \item Migrated codebases from on premises to the cloud
       \item Involved in the development of microservices using Java, Spring Boot, REST, SonarQube and deployment using Jenkins pipelines, Docker and Kubernetes
       \item Implemented a product for COVID-19 to help customers be ready with all required information before traveling
-    \end{itemize}}
+    \resumeItemListEnd
 
-  \begin{cvsubsection}{Software Developer}{Fast Enterprises}{Jul 2018-Jan 2020}
-    \begin{itemize}
+  \resumeSubheading
+    {Fast Enterprises}{Sacramento, CA}
+    {Software Developer}{Jul 2018-Jan 2020}
+    \resumeItemListStart
       \item Configured scheduled jobs in production, dashboards, reports and dozens of new tax
           types via VB.NET and SQL for the California Department of Tax and Fee Administration,
           expected to generate \$50M over 5 years
@@ -41,37 +38,51 @@
           iCapture, allowing paper returns to be brought into the system
       \item Collaborated with the business for gathering requirements, customization and user
           acceptance testing
-    \end{itemize}
-  \end{cvsubsection}
+    \resumeItemListEnd
 
-  \begin{cvsubsection}{Software Developer Intern}{New York State Senate}{Sept 2017-Dec 2017}
-    \begin{itemize}
+  \resumeSubheading
+    {Siena College}{Albany, NY}
+    {Student Researcher}{Jun 2017-Jul 2017}
+    \resumeItemListStart
+      \item Reduced duplicate records by 30\% in HUD dataset, improving data quality.
+      \item Researched fuzzy string matching algorithms.
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {New York State Senate}{Albany, NY}
+    {Software Developer Intern}{Sept 2017-Dec 2017}
+    \resumeItemListStart
       \item Converted a travel request procedure from paper to online for the New York
         State Senate's Employee Self-Service, impacting over 1,500 employees
       \item Used Java, Spring, PostgreSQL and Angular to develop a RESTful API to
         calculate travel reimbursements
       \item Participated in daily Scrum stand-up meetings to determine functional requirements and
         demonstrate progress
-    \end{itemize}
-  \end{cvsubsection}
-
-  \begin{cvsubsection}{Student Researcher}{Siena College}{Jun 2017-Jul 2017}
-    \begin{itemize}
-      \item Reduced duplicate records by 30\% in HUD dataset, improving data quality.
-      \item Researched fuzzy string matching algorithms.
-    \end{itemize}
-  \end{cvsubsection}
-
-  \begin{cvsubsection}{Computer Science Tutor}{Siena College}{Sept 2016-May 2018}
-    \begin{itemize}
+    \resumeItemListEnd
+  
+  \resumeSubheading
+    {Siena College}{Albany, NY}
+    {Computer Science Tutor}{Sept 2016-May 2018}
+    \resumeItemListStart
       \item Toured introductory CS courses, strengthening Python/Java skills.
-    \end{itemize}
-  \end{cvsubsection}
-\end{cvsection}
-
+    \resumeItemListEnd
 
 %-----------PROJECTS-----------------
-\begin{cvproject}{Text Retrieval System}
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Text Retrieval System}
+      {Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds}
+    \resumeSubItem{GitHub Visualization}
+      {Data visualization of Git log data using D3 to analyze project trends over time.}
+    \resumeSubItem{Recommendation System}
+      {Music and movie recommender systems using collaborative filtering on public datasets.}
+    \resumeSubItem{Mac Setup}
+      {Book that gives step-by-step instructions on setting up developer environment on macOS.}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\begin{cvsection}{Projects}
+  \begin{cvproject}{Text Retrieval System}
     \begin{itemize}
       \item{Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds}
       \item{Performs either a vector space model or a simple Boolean model search in under a second}
@@ -85,19 +96,18 @@
     \end{itemize}
   \end{cvproject}
 
-
 %--------PROGRAMMING SKILLS------------
-\begin{cvsection}{Skills}
-  \printskills
 \end{cvsection}
 
+\begin{cvsection}{Programming Skills}
+  \printskills
+
+\end{cvsection}
 
 %-----------EDUCATION-----------------
-\begin{cvsection}{Education}
-  \begin{cveducation}{Siena College}{Bachelor of Science, Computer Science}{Loudonville, NY}{May 2018}
+\section{Education}
+  \begin{cveducation}{Siena College}{May 2018}{Bachelor of Science in Computer Science}{}
   \end{cveducation}
-\end{cvsection}
-
 
 %-------------------------------------------
 \end{document}
