@@ -85,13 +85,13 @@
 
 %------------CONSTANTS---------
 % Space before section titles
-\def\beforesectionspace{5pt}
+\def\beforesectionspace{10pt}
 
 % Space after section titles
-\def\aftersectionspace{2pt}
+\def\aftersectionspace{5pt}
 
 % Space before project entries
-\def\beforesubsectionprojectspace{3pt}
+\def\beforesubsectionprojectspace{6pt}
 
 % Space after project entries
 \def\aftersubsectionprojectspace{0pt}
@@ -108,47 +108,32 @@
 
 % Format sections
 \titleformat{\section}
-    {\bfseries\uppercase}
+    {\scshape\bfseries\Large}
     {}
     {0em}
-    {}[\titlerule\vspace{5pt}]
+    {}[\vspace*{\beforesectionheaderhrulespace}
+       \hrule height \sectionheaderhruleheight
+       \vspace*{\aftersectionspace}]
 \titlespacing{\section}
     {0pt}
     {\beforesectionspace}
-    {\aftersectionspace}
+    {0pt}
 
 %-------------------------
-% Custom commands
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItem}[2]{
-  \item\small{
-    \textbf{#1}{: #2 \vspace{-2pt}}
-  }
-}
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
-
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-% Print subsection
-% Standard job entry
-% Uses tabularx with X Z Y column types
-% X = left-aligned (job title)
-% Z = centered (company)
-% Y = right-aligned (dates)
-\newcommand{\resumeSubheading}[4]{
+%------------RESUME SUBHEADING------------
+\NewDocumentCommand{\resumeCompany}{mm}{
     \vspace*{\beforesubsectionprojectspace}
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+
+    \begin{tabularx}{\textwidth}[t]{@{}XY@{}}
+        \textbf{#1} & #2 \\
+    \end{tabularx}
 }
 
-\newcommand{\resumeSubSubheading}[2]{
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-5pt}
+%------------RESUME POSITION------------
+\NewDocumentCommand{\resumePosition}{mm}{
+    \begin{tabularx}{\textwidth}[t]{@{}XY@{}}
+        \textit{\small #1} & \textit{\small #2} \\
+    \end{tabularx}
 }
 
 \NewDocumentCommand{\cvproject}{m}{
