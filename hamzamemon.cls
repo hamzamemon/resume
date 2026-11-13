@@ -83,20 +83,6 @@
     pdfauthor={Hamza Memon}
 }
 
-%----------SECTIONS-----------------
-% Section customization package
-\usepackage{titlesec}
-
-% Format section headers
-\titleformat{\section}
-    {\bfseries\uppercase}
-    {}
-    {0em}
-    {}[\titlerule\vspace{5pt}]
-
-% Section vertical spacing
-\titlespacing\section{0pt}{10pt plus 4pt minus 2pt}{0pt plus 0pt minus 0pt}
-
 %------------CONSTANTS---------
 % Space before section titles
 \def\beforesectionspace{5pt}
@@ -116,8 +102,20 @@
 % Thickness of horizontal rule
 \def\sectionheaderhruleheight{0.5pt}
 
-% Space before company name
-\def\beforecvsubsectionnocompanyspace{0pt}
+%----------SECTIONS-----------------
+% Section customization package
+\usepackage{titlesec}
+
+% Format sections
+\titleformat{\section}
+    {\bfseries\uppercase}
+    {}
+    {0em}
+    {}[\titlerule\vspace{5pt}]
+\titlespacing{\section}
+    {0pt}
+    {\beforesectionspace}
+    {\aftersectionspace}
 
 %-------------------------
 % Custom commands
@@ -132,58 +130,6 @@
 
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%------------SECTIONS------------
-\makeatletter
-\newenvironment{cvsection}[1]{
-    \vspace*{\beforesectionspace}
-
-    \textsc{\textbf{\Large #1}}
-    \vspace*{\beforesectionheaderhrulespace}
-    \hrule height \sectionheaderhruleheight
-
-    \vspace*{\aftersectionspace}
-
-    % Add visual separator between sections
-    \vspace{4pt}
-}
-\makeatother
-
-% Subsection with two positions (promotion)
-\makeatletter
-\NewDocumentCommand\cvsubsectiontwopositions{m m m m m m m}{
-    \textbf{#1}
-
-    \vspace*{\beforecvsubsectionnocompanyspace}
-    \begin{tabularx}{1\textwidth}{X Y}
-        \textbf{#2} & #3
-    \end{tabularx}
-
-    #4
-
-    \vspace*{\beforecvsubsectionnocompanyspace}
-    \begin{tabularx}{1\textwidth}{X Y}
-        \textbf{#5} & #6
-    \end{tabularx}
-
-    #7
-}
-\makeatother
-
-% Subsection with no beginning space
-% Used for project continuations without extra spacing
-% Uses tabularx with X Y column types
-
-\makeatletter
-\NewDocumentEnvironment{cvsubsectionstart}{m m m}{
-    \begin{tabularx}{1\textwidth}{X Y}
-        \textbf{#1} & #2 \\
-        & #3
-    \end{tabularx}
-
-    \vspace*{\aftersubsectionprojectspace}
-}
-\makeatother
 
 % Print subsection
 % Standard job entry
@@ -205,79 +151,10 @@
     \end{tabular*}\vspace{-5pt}
 }
 
-
-\makeatletter
-\NewDocumentEnvironment{cvsubsection}{m m m}{
-    \vspace*{\beforesubsectionprojectspace}
-
-    \begin{tabularx}{1\textwidth}{X Z Y}
-        \textbf{#1} & #2 & #3
-    \end{tabularx}
-
-    \vspace*{\aftersubsectionprojectspace}
-}
-\makeatother
-
-% Education environment
-% Similar structure to subsection
-% Uses tabularx with X Y column types
-
-
-\makeatletter
-\NewDocumentEnvironment{cveducation}{m m m}{
-    \begin{tabularx}{1\textwidth}{X Y}
-        \textbf{#1} & #2 \\
-        #3
-    \end{tabularx}
-
-    \vspace*{\aftersubsectionprojectspace}
-}
-\makeatother
-
-% Project continuation without extra space
-% Used when project continues from previous entry
-% Simple bold text display
-
-\makeatletter
-\NewDocumentEnvironment{cvprojectstart}{m}{
-    \textbf{#1}
-
-    \vspace*{\aftersubsectionprojectspace}
-}
-\makeatother
-
-
-
-% Print project
-% Project entry
-% Simple bold text display
-% Uses beforesubsectionprojectspace spacing
-
-\makeatletter
-\NewDocumentEnvironment{cvproject}{m}{
+\NewDocumentCommand{\cvproject}{m}{
     \vspace*{\beforesubsectionprojectspace}
 
     \textbf{#1}
 
     \vspace*{\aftersubsectionprojectspace}
 }
-\makeatother
-
-%=============================================================================
-% 13. LINKS
-%=============================================================================
-% Skills command - Grouped by category for better scanning
-% Store user's skills
-% Takes one mandatory argument (comma-separated skills)
-\makeatletter
-\NewDocumentCommand\skills{m}{
-  \def\@skills{#1}
-}
-
-\makeatletter
-\NewDocumentCommand\printskills{}{
-    \begin{itemize}
-        \item{Languages: \small{\@skills}}
-    \end{itemize}
-}
-\makeatother

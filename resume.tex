@@ -1,18 +1,13 @@
 \documentclass{hamzamemon}
 
-\skills{Java, Python, JavaScript, TypeScript | Spring Boot, REST, Angular, React | SQL, Docker, Kubernetes | HTML, CSS, Git, Jira}
-
-
 %-------------------------------------------
 \begin{document}
-
 
 %----------HEADING-----------------
 \begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}r}
   \textbf{{\Large Hamza Memon}} & Email: \href{mailto:hmemon67@gmail.com}{hmemon67@gmail.com}\\
   \href{https://linkedin.com/in/hamza-memon}{https://linkedin.com/in/hamza-memon} & Mobile: \href{tel:+15183449662}{+1-518-344-9662} \\
 \end{tabularx}
-
 
 %----------EXPERIENCE-----------------
 \section{Experience}
@@ -69,45 +64,23 @@
 
 %-----------PROJECTS-----------------
 \section{Projects}
-  \resumeSubHeadingListStart
-    \resumeSubItem{Text Retrieval System}
-      {Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds}
-    \resumeSubItem{GitHub Visualization}
-      {Data visualization of Git log data using D3 to analyze project trends over time.}
-    \resumeSubItem{Recommendation System}
-      {Music and movie recommender systems using collaborative filtering on public datasets.}
-    \resumeSubItem{Mac Setup}
-      {Book that gives step-by-step instructions on setting up developer environment on macOS.}
-  \resumeSubHeadingListEnd
-
-%-----------PROJECTS-----------------
-\begin{cvsection}{Projects}
-  \begin{cvproject}{Text Retrieval System}
-    \begin{itemize}
-      \item{Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds}
-      \item{Performs either a vector space model or a simple Boolean model search in under a second}
-    \end{itemize}
-  \end{cvproject}
-
-  \begin{cvproject}{Porter Stemmer}
-    \begin{itemize}
-      \item{Implemented Snowball's Porter2 stemming algorithm in Java, grouping similarly stemmed words}
-      \item{Uploaded as a Maven artifact to the Central Repository, allowing integration with any Maven project}
-    \end{itemize}
-  \end{cvproject}
+    \cvproject{Text Retrieval System}
+      \resumeItemListStart
+        \item Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds
+        \item Performs either a vector space model or a simple Boolean model search in under a second
+      \resumeItemListEnd
 
 %--------PROGRAMMING SKILLS------------
-\end{cvsection}
-
-\begin{cvsection}{Programming Skills}
-  \printskills
-
-\end{cvsection}
+\section{Programming Skills}
+  \resumeItemListStart
+    \item Java, Python, JavaScript, TypeScript | Spring Boot, REST, Angular, React | SQL, Docker, Kubernetes | HTML, CSS, Git, Jira
+  \resumeItemListEnd
 
 %-----------EDUCATION-----------------
 \section{Education}
-  \begin{cveducation}{Siena College}{May 2018}{Bachelor of Science in Computer Science}{}
-  \end{cveducation}
+  \resumeSubheading
+    {Siena College}{May 2018}
+    {Bachelor of Science in Computer Science}{}
 
 %-------------------------------------------
 \end{document}
