@@ -95,22 +95,26 @@
     {\beforesectionspace}
     {0pt}
 
+% Company information
 \NewDocumentCommand{\resumeCompany}{mm}{
     \begin{tabularx}{\textwidth}[t]{@{}Xr@{}}
         \textbf{#1} & #2 \\
     \end{tabularx}
 }
 
+% Position information
 \NewDocumentCommand{\resumePosition}{mm}{
     \begin{tabularx}{\textwidth}[t]{@{}Xr@{}}
         \textit{\small #1} & \textit{\small #2} \\
     \end{tabularx}
 }
 
+% Project title
 \NewDocumentCommand{\cvproject}{m}{
     \textbf{#1}\par
 }
 
+% Skill label and text
 \NewDocumentCommand{\skill}{mm}{
     \textbf{#1:} #2\par
 }
