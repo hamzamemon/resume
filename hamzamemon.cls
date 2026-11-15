@@ -95,15 +95,12 @@
     {\beforesectionspace}
     {0pt}
 
-%-------------------------
-%------------RESUME SUBHEADING------------
 \NewDocumentCommand{\resumeCompany}{mm}{
     \begin{tabularx}{\textwidth}[t]{@{}Xr@{}}
         \textbf{#1} & #2 \\
     \end{tabularx}
 }
 
-%------------RESUME POSITION------------
 \NewDocumentCommand{\resumePosition}{mm}{
     \begin{tabularx}{\textwidth}[t]{@{}Xr@{}}
         \textit{\small #1} & \textit{\small #2} \\
