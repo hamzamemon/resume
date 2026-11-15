@@ -1,68 +1,64 @@
 \documentclass{hamzamemon}
 
-%-------------------------------------------
+%----------------------------------
 \begin{document}
 
 %----------HEADING-----------------
 \begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\LARGE Hamza Memon} & Email: \href{mailto:hmemon67@gmail.com}{hmemon67@gmail.com}\\
+  \textbf{\huge Hamza Memon} & Email: \href{mailto:hmemon67@gmail.com}{hmemon67@gmail.com}\\
   \href{https://linkedin.com/in/hamza-memon}{https://linkedin.com/in/hamza-memon} & Mobile: \href{tel:+15183449662}{+1-518-344-9662} \\
 \end{tabularx}
 
-%----------EXPERIENCE-----------------
+%----------EXPERIENCE--------------
 \section{Experience}
   \resumeCompany{American Airlines}{Dallas, TX}
-    \resumePosition{Software Engineer}{Jun 2022-Present}
-    \resumePosition{Associate Software Engineer}{Feb 2021-Jun 2022}
+    \resumePosition{Software Developer}{Jun 2022-Present}
+    \resumePosition{Associate Software Developer}{Feb 2021-Jun 2022}
       \begin{itemize}
-        \item Led the design and development of a mobile document upload solution using Angular and Tesseract.js OCR, allowing X customers to scan and submit outstanding documents, cutting airport time and confusion
-        \item Migrated codebases from on premises to the cloud
-        \item Involved in the development of microservices using Java, Spring Boot, REST, SonarQube and deployment using Jenkins pipelines, Docker and Kubernetes
-        \item Implemented a product for COVID-19 to help customers be ready with all required information before traveling
+        \item Led development and architecture of in-house travel document submission solution using Angular, TypeScript, and Tesseract.js OCR, enabling customers to scan and submit outstanding travel documents
+        \item Built end-to-end COVID-19 travel readiness product, allowing, via Sherpa's travel requirements API and Angular, passengers to identify and prepare required documentation
+        \item Collaborated with other airlines and oneworld\textsuperscript{\textregistered} alliance to enable cross-airline check-in functionality across multiple microservices
+        \item Modernized legacy on-premises services to microservices, improving scalability and maintainability
       \end{itemize}
 
   \resumeCompany{Fast Enterprises}{Sacramento, CA}
     \resumePosition{Software Developer}{Jul 2018-Jan 2020}
       \begin{itemize}
-        \item Configured scheduled jobs in production, dashboards, reports and dozens of new tax types via VB.NET and SQL for the California Department of Tax and Fee Administration, expected to generate \$50M over 5 years
-        \item Managed the transfer and translations of Key Data Entry files through integrating iCapture, enabling paper returns to be be processed digitally
-        \item Collaborated with the business stakeholders to gather requirements, translate business needs into technical specifications and user acceptance testing
+        \item Implemented and maintained dozens of new tax types, scheduled jobs, dashboards and reports via VB.NET and SQL for the California Department of Tax and Fee Administration, projected to generate \$50M over 5 years
+        \item Integrated iCapture into tax processing workflows, enabling the digital capture, transfer and translations of Key Data Entry files, reducing reliance on manual paper-based processing 
+        \item Worked directly with business stakeholders to translate operational requirements into technical specifications and support user acceptance testing
       \end{itemize}
 
   \resumeCompany{New York State Senate}{Albany, NY}
     \resumePosition{Software Developer Intern}{Sept 2017-Dec 2017}
       \begin{itemize}
-        \item Digitized the employee travel request process by replacing paper-based workflows with an online solution for the New York State Senate's Employee Self-Service platform, impacting over 1,500 employees
-        \item Developed RESTful APIs using Java, Spring, PostgreSQL and Angular to calculate travel reimbursements
-        \item Participated in daily Scrum stand-up meetings to determine functional requirements and demonstrate progress
+        \item Digitized the employee travel request process for the New York State Senate's Employee Self-Service platform by replacing paper-based workflows, impacting over 1,500 employees
+        \item Built RESTful APIs using Java, Spring, PostgreSQL and Angular to calculate travel reimbursements
+        \item Collaborated with the development team in an Agile environment, participated in sprint planning, daily stand-ups and meetings to determine functional requirements and demonstrate progress
       \end{itemize}
   
-  \resumeCompany{Siena College}{Albany, NY}
-    \resumePosition{Computer Science Tutor}{Sept 2016-May 2018}
-      \begin{itemize}
-        \item Mentored students in introductory computer science courses, strengthening their Python and Java skills
-      \end{itemize}
-
-%-----------PROJECTS-----------------
+%-----------PROJECTS---------------
 \section{Projects}
   \cvproject{Text Retrieval System}
     \begin{itemize}
-      \item Engineered an information retrieval system utilizing Java Serializable objects, capable of indexing 20,000 documents in 15 seconds
-      \item Implemented vector space and simple Boolean model search in under one second
+      \item Engineered a Java-based information retrieval system utilizing serialized data structures and cosine normalization, capable of indexing 20,000 documents in 15 seconds
+      \item Implemented vector space and simple Boolean queries, enabling efficient document search under one second
+      \item Used custom PorterStemmer for stemming and stop word filtering
     \end{itemize}
 
-%--------PROGRAMMING SKILLS------------
-\section{Programming Skills}
-  \begin{itemize}
-    \item Java, Spring Boot, HTML, CSS, JavaScript, TypeScript, Angular, SQL
-  \end{itemize}
+%--------PROGRAMMING SKILLS--------
+\section{Skills}
+  \skill{Languages}{Java, Python, SQL}
+  \skill{Frontend}{Angular, HTML, CSS, JavaScript, TypeScript}
+  \skill{Backend}{Spring Boot, Spring WebFlux}
+  \skill{Cloud/DevOps}{IBM Cloud, Docker, Kubernetes, GitHub Actions}
 
-%-----------EDUCATION-----------------
+%-----------EDUCATION--------------
 \section{Education}
   \begin{tabularx}{\textwidth}{@{}X@{}}
     \textbf{Siena College} \\
     \textit{Bachelor of Science in Computer Science} \\
   \end{tabularx}
 
-%-------------------------------------------
+%----------------------------------
 \end{document}
