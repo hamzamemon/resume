@@ -44,7 +44,7 @@
     parsep=0pt,
     topsep=0pt,
     partopsep=0pt,
-    after=\vspace{5pt}
+    after=\vspace{2pt}
 }
 
 %----------LINKS & COLORS-----------------
