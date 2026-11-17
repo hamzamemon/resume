@@ -1,17 +1,21 @@
-# My Resume
+# Hamza Memon's Resume
 
-My single-page resume that utilizes LuaLaTeX for advanced features to make
-updating easier and less intensive, and a common font (Helvetica) for increased
-out-of-the-box support with the majority of computers.
+A single-page resume template for software developers. Built on LaTeX with pre-configured fonts and templates, it provides an easy setup for quick customization. The template features clearly documented sections with consistent formatting across education, experience, and projects.
 
-#### Motivation
+## Motivation
 
-This LaTeX template was created to improve the resume creation process over
-Google Drive and Microsoft Word. Formatting in these two programs is very
-inefficient and takes time for more intense formatting, such as left, center
-and right justifying in a single line, custom spacing between paragraphs/lists
-and columns.
+This LaTeX template was created to improve the resume creation process over Google Drive and Microsoft Word. Formatting in these programs is rather difficult and inefficient to maintain across multiple sections. Using LaTeX allows for much easier customization without having to update styling everywhere whenever you make a change. This allows you to focus on the actual content instead of getting the styling to function.
 
-#### Preview
+## Build
 
-![resume](resume.png)
+```sh
+lualatex resume.tex
+```
+
+## Preview
+
+![Resume](resume.png)
+
+## License
+
+The template code is released under the MIT License. All example data belongs to its original author.

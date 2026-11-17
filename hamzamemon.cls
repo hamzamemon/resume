@@ -1,4 +1,4 @@
-\ProvidesClass{hamzamemon}[2026/11/09 v4.0 class]
+\ProvidesClass{hamzamemon}[2026/11/09 class]
 \ProcessOptions\relax
 
 %----------BASIC SETUP-----------------
