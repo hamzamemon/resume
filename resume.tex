@@ -1,113 +1,63 @@
-\documentclass[]{xjavathehutt}
+\documentclass{hamzamemon}
 
-\name{Hamza Memon}
-\email{hmemon67@gmail.com}
-\phonenumber{(518) 344-9662}
-\linkedin{linkedin.com/in/hamza-memon}
-\github{github.com/hamzamemon}
-\portfolio{https://hamzamemon.com}
-\skills{Java, HTML, CSS, JavaScript, Typescript, Angular, React, SQL, Python, VB.NET}
-\environments{Windows, Linux, Visual Studio, IntelliJ, PyCharm, Git, Jira, Docker, Kubernetes}
-
-
-%-------------------------------------------
+%----------------------------------
 \begin{document}
 
-
 %----------HEADING-----------------
-\makeheader
+\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\huge Hamza Memon} & Email: \href{mailto:hmemon67@gmail.com}{hmemon67@gmail.com}\\
+  \href{https://linkedin.com/in/hamza-memon}{https://linkedin.com/in/hamza-memon} & Mobile: \href{tel:+15183449662}{+1-518-344-9662} \\
+\end{tabularx}
 
-
-%----------EXPERIENCE-----------------
-\begin{cvsection}{Experience}
-  \cvsubsectiontwopositions{American Airlines}
-  {Software Developer}{Jun 2022-Present}
-  {}
-    {Associate Software Developer}{Feb 2021-Jun 2022}
-    {\begin{itemize}
-      \item{Migrated codebases from on premises to the cloud}
-      \item{Involved in the development of microservices using Java, Spring Boot, REST, SonarQube and deployment using Jenkins pipelines, Docker and Kubernetes}
-      \item{Implemented a product for COVID-19 to help customers be ready with all required information before traveling}
-    \end{itemize}}
-
-  \begin{cvsubsection}{Software Developer}{Fast Enterprises}{Jul 2018-Jan 2020}
+%----------EXPERIENCE--------------
+\section{Experience}
+  \resumeCompany{American Airlines}{Dallas, TX}
+    \resumePosition{Software Developer}{Jun 2022-Present}
+    \resumePosition{Associate Software Developer}{Feb 2021-Jun 2022}
     \begin{itemize}
-      \item{Configured scheduled jobs in production, dashboards, reports and dozens of new tax
-          types via VB.NET and SQL for the California Department of Tax and Fee Administration,
-          expected to generate \$50M over 5 years}
-      \item{Managed the transfer and translations of Key Data Entry files through integrating
-          iCapture, allowing paper returns to be brought into the system}
-      \item{Collaborated with the business for gathering requirements, customization and user
-          acceptance testing}
+      \item Architected and led development of a digital travel document platform using Angular, TypeScript, and Tesseract.js OCR, enabling live passport capture, image uploads and automated machine-readable zone (MRZ) extraction and validation, reducing time spent completing travel documentation at airport kiosks and counters
+      \item Expanded cross-airline check-in capabilities in collaboration with the oneworld\textsuperscript{\textregistered} alliance, developing REST APIs and microservices for passenger eligibility, document validation, flight data, and boarding passes, enabling approximately 5,500 additional passengers to become eligible for check-in monthly
+      \item Integrated Sherpa, Timatic, and Verifly APIs to deliver destination-specific COVID-19 health and documentation requirements through end-to-end travel readiness experiences
+      \item Modernized legacy applications by migrating on-premises systems to cloud-based microservices, improving application scalability and maintainability
+      \item Strengthened application reliability and security through CI/CD automation, dependency and Angular upgrades, CodeQL integration, and centralized monitoring and metrics
     \end{itemize}
-  \end{cvsubsection}
 
-  \begin{cvsubsection}{Software Developer Intern}{New York State Senate}{Sept 2017-Dec 2017}
+  \resumeCompany{Fast Enterprises}{Sacramento, CA}
+    \resumePosition{Software Developer}{Jul 2018-Jan 2020}
+      \begin{itemize}
+        \item Implemented and maintained dozens of new tax types, scheduled jobs, dashboards and reports using VB.NET and SQL for the California Department of Tax and Fee Administration, projected to generate \$50M over five years
+        \item Integrated iCapture into tax processing workflows, enabling digital capture, transfer and translation of Key Data Entry files and reducing manual paper-based processing
+        \item Collaborated directly with business stakeholders to translate operational requirements into technical specifications and supported user acceptance testing
+      \end{itemize}
+
+  \resumeCompany{New York State Senate}{Albany, NY}
+    \resumePosition{Software Developer Intern}{Sept 2017-Dec 2017}
+      \begin{itemize}
+        \item Digitized the employee travel request process for the New York State Senate Employee Self-Service platform, replacing paper-based processes and supporting over 1,500 employees
+        \item Developed RESTful APIs using Java, Spring, PostgreSQL and Angular to calculate travel reimbursements
+      \end{itemize}
+  
+%-----------PROJECTS---------------
+\section{Projects}
+  \cvproject{Text Retrieval System}
     \begin{itemize}
-      \item{Converted a travel request procedure from paper to online for the New York
-        State Senate's Employee Self-Service, impacting over 1,500 employees}
-      \item{Used Java, Spring, PostgreSQL and Angular to develop a RESTful API to
-        calculate travel reimbursements}
-      \item{Participated in daily Scrum stand-up meetings to determine functional requirements and
-        demonstrate progress}
+      \item Built a Java-based search engine using inverted indexing, Porter2 stemming and cosine normalization, indexing 20,000 documents in 15 seconds
+      \item Implemented vector space ranking and Boolean query processing, enabling sub-second document retrieval
     \end{itemize}
-  \end{cvsubsection}
 
-  \begin{cvsubsection}{Student Researcher}{Siena College}{Jun 2017-Jul 2017}
-    \begin{itemize}
-      \item{Reduced the number of duplicated individuals in a data set provided by HUD by 30\% by
-        implementing a deduplication algorithm by discovering trends in the data and merging
-      duplicated information}
-      \item{Conducted research to identify possible improvements
-        to the algorithm, such as fuzzy string matching and human error handling}
-    \end{itemize}
-  \end{cvsubsection}
+%-----------SKILLS-----------------
+\section{Skills}
+  \skill{Languages}{Java, Python, SQL}
+  \skill{Frontend}{Angular, HTML, CSS, JavaScript, TypeScript}
+  \skill{Backend}{Spring Boot, Spring WebFlux, REST APIs, Microservices}
+  \skill{Cloud/DevOps}{IBM Cloud, Docker, Kubernetes, GitHub Actions, CI/CD}
 
-  \begin{cvsubsection}{Computer Science Tutor}{Siena College}{Sept 2016-May 2018}
-    \begin{itemize}
-      \item{Led drop-in group tutoring for introductory computer science courses to strengthen
-        Python and Java skills}
-    \end{itemize}
-  \end{cvsubsection}
-\end{cvsection}
+%-----------EDUCATION--------------
+\section{Education}
+  \begin{tabularx}{\textwidth}{@{}X@{}}
+    \textbf{Siena College} \\
+    \textit{Bachelor of Science in Computer Science} \\
+  \end{tabularx}
 
-
-%-----------PROJECTS-----------------
-\begin{cvsection}{Projects}
-  \begin{cvprojectstart}{ESLint Configuration Checker}
-    \begin{itemize}
-      \item{Python script that reads an ESLint configuration file and provides suggestions on parser options, environments and plugins, displays outdated or redundant rules and optional parameters, resulting in a cleaner configuration file}
-    \end{itemize}
-  \end{cvprojectstart}
-
-  \begin{cvproject}{Text Retrieval System}
-    \begin{itemize}
-      \item{Programmed an information retrieval system utilizing Serializable objects, able to index 20,000 files in 15 seconds}
-      \item{Performs either a vector space model or a simple Boolean model search in under a second}
-    \end{itemize}
-  \end{cvproject}
-
-  \begin{cvproject}{Porter Stemmer}
-    \begin{itemize}
-      \item{Implemented Snowball's Porter2 stemming algorithm in Java, grouping similarly stemmed words}
-      \item{Uploaded as a Maven artifact to the Central Repository, allowing integration with any Maven project}
-    \end{itemize}
-  \end{cvproject}
-\end{cvsection}
-
-
-%--------PROGRAMMING SKILLS------------
-\begin{cvsection}{Skills}
-  \printskills
-\end{cvsection}
-
-
-%-----------EDUCATION-----------------
-\begin{cvsection}{Education}
-  \begin{cveducation}{Siena College}{Bachelor of Science, Computer Science}{Loudonville, NY}{May 2018}
-  \end{cveducation}
-\end{cvsection}
-
-
-%-------------------------------------------
+%----------------------------------
 \end{document}
